@@ -70,7 +70,7 @@ const sent_sub_token = async (sub_address:string) =>{
 
   const value = api.createType('Balance', '5000000000000000000');
   const transfer = api.tx.balances.transfer(sub_address, value);
-  await transfer.signAndSend(system, { nonce }, ({ events = [], status }) => {
+  transfer.signAndSend(system, { nonce }, ({ events = [], status }) => {
     console.log('Transaction status:', status.type);
     if (status.isInBlock) {
       console.log('Included at block hash', status.asInBlock.toHex());
