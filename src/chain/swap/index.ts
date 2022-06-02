@@ -47,8 +47,6 @@ function get_reserves(id:string, token_a: number, token_b: number,Reserves: [any
 }
 
 
-
-
 async function swap_output(token_a_amount:string) {
   const provider = new WsProvider('ws://127.0.0.1:9944');
   // Create the API and wait until ready
@@ -68,6 +66,30 @@ async function swap_output(token_a_amount:string) {
   return result;
 }
 
+async function fungible_token(token_id:string) {
+  const provider = new WsProvider('ws://127.0.0.1:9944');
+  // Create the API and wait until ready
+  const api = await ApiPromise.create({
+    provider,
+  });
+  const reserves_data = await api.query.tokenFungible.tokens(token_id);
+  const result = reserves_data.toString();
+  return result;
+}
+
+async function fungible_token_balance(token_id:string,address:string) {
+  const provider = new WsProvider('ws://127.0.0.1:9944');
+  // Create the API and wait until ready
+  const api = await ApiPromise.create({
+    provider,
+  });
+  const reserves_data = await api.query.tokenFungible.balances(token_id,address);
+  const result = reserves_data.toString();
+  return result;
+}
+
 export {
-  swap_output
+  swap_output,
+  fungible_token,
+  fungible_token_balance
 }

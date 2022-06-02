@@ -11,12 +11,6 @@ export class SwapPoolDetails extends pool_base_info{
   id: number;
 
   @Column()
-  assets_a:string;
-
-  @Column()
-  assets_b:string;
-
-  @Column()
   assets_a_address:string;
 
   @Column()

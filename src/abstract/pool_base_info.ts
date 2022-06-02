@@ -3,8 +3,24 @@ import {
 } from 'typeorm';
 
 export abstract class pool_base_info {
+
   @Column()
-  asset_a_image_url:string;
+  pool_id:string;
+
+  @Column()
+  assets_a:string;
+
+  @Column()
+  assets_b:string;
+
+  @Column()
+  assets_a_id:string;
+
+  @Column()
+  assets_b_id:string;
+
+  @Column()
+  assets_a_image_url:string;
 
   @Column()
   assets_b_image_url:string;
